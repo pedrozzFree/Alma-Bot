@@ -6,7 +6,7 @@
 
 <p align="center">
   <img title="Criador" src="https://img.shields.io/badge/Criador-Pedrozz%20Mods-green.svg?style=for-the-badge&logo=github">
-  <img title="Versão" src="https://img.shields.io/badge/Versão-1.0.9-red.svg?style=for-the-badge&logo=github">
+  <img title="Versão" src="https://img.shields.io/badge/Versão-1.0.0-pink.svg?style=for-the-badge&logo=github">
 </p>
 
 <div align="center">
@@ -75,7 +75,7 @@ cd /sdcard && git clone https://github.com/pedrozzFree/Alma-Bot.git
 cd /sdcard/Alma-Bot && sh start.sh
 ```
 
-> ✅ **Sempre que for ligar o bot, use apenas o último comando.**
+> **Sempre que for ligar o bot, use apenas o último comando.**
 
 ![image](https://user-images.githubusercontent.com/51442719/149520330-b3bce735-5a57-481d-b122-fda4e2052cf8.png)
 
@@ -120,7 +120,7 @@ Edite o arquivo `dono/config.js` para personalizar o bot:
 
 ![image](https://user-images.githubusercontent.com/51442719/149520330-b3bce735-5a57-481d-b122-fda4e2052cf8.png)
 
-## 🌌 Links Importantes
+## Links Importantes
 
 - [Grupo de Atualizações WA](https://whatsapp.com/channel/0029Vapwu6mATRSeTjjG7M37)
 - [Canal WA](https://whatsapp.com/channel/0029Vapwu6mATRSeTjjG7M37)
@@ -132,6 +132,7 @@ Edite o arquivo `dono/config.js` para personalizar o bot:
 
 ## Licença e Créditos
 
-Este projeto foi desenvolvido por **Pedrozz Mods** e está disponível gratuitamente para a comunidade.
+💙 Apoie o projeto mantendo os créditos!
+O uso comercial é permitido, mas pedimos que mantenha os créditos ao desenvolvedor como forma de reconhecimento pelo trabalho.
 
 > O uso comercial é permitido, mas **manter os créditos** é uma forma justa de reconhecimento.
