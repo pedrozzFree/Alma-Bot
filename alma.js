@@ -25,7 +25,6 @@ const { imageToWebp2, videoToWebp2, writeExifImg2, writeExifVid2 } = require('./
 //⊰᯽⊱┈──╌❊ CONFIGURAÇÃO ❊╌──┈⊰᯽⊱\\
 const { prefix, botName, emoji, BaseApiDark, DARK_USERNAME, DARK_APIKEY, donoName, donoLid, donoJid, verMsg, isBotao } = require("./dono/config.json");
 const config = JSON.parse(fs.readFileSync("./dono/config.json"))
-const configDono = JSON.parse(fs.readFileSync("./files/json/dono.json"))
 const fotomenu = "./files/imagem/menu.png"
 const d = "`";
 
