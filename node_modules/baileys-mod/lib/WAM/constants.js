@@ -1,8 +1,7 @@
-"use strict"
-
-Object.defineProperty(exports, "__esModule", { value: true })
-
-const WEB_EVENTS = [
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FLAG_EXTENDED = exports.FLAG_FIELD = exports.FLAG_EVENT = exports.FLAG_GLOBAL = exports.FLAG_BYTE = exports.WEB_GLOBALS = exports.WEB_EVENTS = void 0;
+exports.WEB_EVENTS = [
     {
         name: 'WebcFingerprint',
         id: 1704,
@@ -14793,9 +14792,8 @@ const WEB_EVENTS = [
         wamChannel: 'regular',
         privateStatsIdInt: -1,
     },
-]
-
-const WEB_GLOBALS = [
+];
+exports.WEB_GLOBALS = [
     {
         'name': 'abKey2',
         'id': 4473,
@@ -15348,24 +15346,5 @@ const WEB_GLOBALS = [
             'private'
         ]
     }
-]
-
-const FLAG_BYTE = 8
-
-const FLAG_GLOBAL = 0
-
-const FLAG_EVENT = 1
-
-const FLAG_FIELD = 2
-
-const FLAG_EXTENDED = 4
-
-module.exports = {
-  WEB_EVENTS, 
-  WEB_GLOBALS, 
-  FLAG_BYTE, 
-  FLAG_GLOBAL, 
-  FLAG_EVENT, 
-  FLAG_FIELD, 
-  FLAG_EXTENDED
-}
+];
+exports.FLAG_BYTE = 8, exports.FLAG_GLOBAL = 0, exports.FLAG_EVENT = 1, exports.FLAG_FIELD = 2, exports.FLAG_EXTENDED = 4;

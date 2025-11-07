@@ -6,7 +6,7 @@
 
 <p align="center">
   <img title="Criador" src="https://img.shields.io/badge/Criador-Pedrozz%20Mods-green.svg?style=for-the-badge&logo=github">
-  <img title="Versão" src="https://img.shields.io/badge/Versão-1.0.0-pink.svg?style=for-the-badge&logo=github">
+  <img title="Versão" src="https://img.shields.io/badge/Versão-1.5.0-pink.svg?style=for-the-badge&logo=github">
 </p>
 
 <div align="center">

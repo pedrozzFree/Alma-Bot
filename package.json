@@ -1,15 +1,16 @@
 {
   "name": "Alma-Bot",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node alma.js"
    },
   "author": "pedrozzMods",
   "license": "ISC",
   "dependencies": {
   "baileys": "^7.0.0-rc.3",
+  "baileys-mod": "^6.8.5",
   "@bochilteam/scraper": "^4.2.4",
   "@adiwajshing/keyed-db": "^0.2.4",
   "qrcode-terminal": "^0.12.0",

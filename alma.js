@@ -1,3 +1,12 @@
+//=========CRÉDITOS=============\\
+/*
+CRÉDITOS: PEDROZZ MODS
+
+Essa base foi criada por Pedrozz Mods, então se você for divulgar, repostar ou compartilhar em qualquer lugar, dá aquela moral e mantém os créditos, fechou? 😅
+
+Ela é totalmente **gratuita**, ou seja, se algum espertinho aí tiver vendendo, já sabe que tá feio hein... 👀
+*/
+//⊰᯽⊱┈──╌❊ BAILEYS ❊╌──┈⊰᯽⊱\\
 const { 
 default: makeWASocket, downloadContentFromMessage,emitGroupParticipantsUpdate,emitGroupUpdate,makeInMemoryStore,prepareWAMessageMedia, MediaType,WAMessageStatus, AuthenticationState, GroupMetadata, initInMemoryKeyStore, MiscMessageGenerationOptions,useMultiFileAuthState, BufferJSON,WAMessageProto,MessageOptions, PHONENUMBER_MCC, WAFlag,WANode,	 WAMetric, ChatModification,MessageTypeProto,WALocationMessage, ReconnectMode,WAContextInfo,proto,	 WAGroupMetadata,ProxyAgent, waChatKey,MimetypeMap,MediaPathMap,WAContactMessage,WAContactsArrayMessage,WAGroupInviteMessage,WATextMessage,WAMessageContent,WAMessage,BaileysError,WA_MESSAGE_STATUS_TYPE,MediaConnInfo, generateWAMessageContent, URL_REGEX,Contact, WAUrlInfo,WA_DEFAULT_EPHEMERAL,WAMediaUpload,mentionedJid,processTime, Browser, makeCacheableSignalKeyStore ,MessageType,Presence,WA_MESSAGE_STUB_TYPES,Mimetype,relayWAMessage, Browsers,GroupSettingChange,delay,DisconnectReason,WASocket,getStream,WAProto,isBaileys,AnyMessageContent,generateWAMessageFromContent, fetchLatestBaileysVersion,processMessage,processingMutex
 } = require('baileys-mod');
@@ -43,7 +52,7 @@ keys: makeCacheableSignalKeyStore(state.keys, pino({ level: 'silent' })),
 logger: pino({ level: 'fatal' }),
 printQRInTerminal: !process.argv.includes("--code"),
 mobile: false,
-browser: Browsers.ubuntu('Chrome'),
+browser: Browsers.macOS('Safari'),
 generateHighQualityLinkPreview: false,
 msgRetryCounterCache,
 connectTimeoutMs: 60000,
@@ -99,6 +108,7 @@ console.log(chalk.hex('#ffaa80')('> Aguardando autenticação no aplicativo What
 }
 //⊰᯽⊱┈──╌❊ CLIENTES ❊╌──┈⊰᯽⊱\\
 var client = alma;
+var astaroth = alma;
 var laura = alma;
 var suc = alma;
 //*==================*\\
@@ -181,17 +191,17 @@ const admins = getGroupAdmins(participants);
 const normalize = id => id?.split('@')[0];
 return admins.some(admin => normalize(admin) === normalize(userId));
 };
+//⊰᯽⊱┈──╌❊ BEM VINDO ❊╌──┈⊰᯽⊱\\
+//TUTORIAL: https://youtu.be/xceuIs6tpZo
+
 //⊰᯽⊱┈──╌❊ ATUALIZAÇÃO DE MSG ❊╌──┈⊰᯽⊱\\
 alma.ev.on('messages.upsert', async ({ messages }) => {
 try {
-const info = messages[0]
-if (info.key.fromMe) return;
+const info = messages[0];
+//console.log(JSON.stringify(info, null, 2)) //DESCOMENTE ISSO CASO QUEIRA VER OS LOGS DE DAIDA DAS MENSAGENS
+if (info.key.fromMe) return; //COMENTE ISSO CASO QUEIRA QUE O BOT RESPONDE ELE MESMO
+if (!info.key.participant) return; //COMENTE ISSO CASO QUEIRA QUE O BOT RESPONDE PV
 
-const key = {
-remoteJid: info.key.remoteJid,
-id: info.key.id, 
-participant: info.key.participant 
-}
 //PARA VIZUALIZAR AS MENSAGENS ENVIADAS AO BOT
 if(verMsg) {
 await alma.readMessages([info.key]);
@@ -200,7 +210,7 @@ if(info.key.remoteJid == "status@broadcast") return;
 }
 const type = baileys.getContentType(info.message);
 
-const from = info.key.remoteJid
+const from = info.key.remoteJid;
 
 const bodyofc = type === "conversation" ? info.message.conversation : type === "viewOnceMessageV2" ? info.message.viewOnceMessageV2.message.imageMessage ? info.message.viewOnceMessageV2.message.imageMessage.caption : info.message.viewOnceMessageV2.message.videoMessage.caption : type === "imageMessage" ? info.message.imageMessage.caption : type === "videoMessage" ? info.message.videoMessage.caption : type === "extendedTextMessage" ? info.message.extendedTextMessage.text : type === "viewOnceMessage" ? info.message.viewOnceMessage.message.videoMessage ? info.message.viewOnceMessage.message.videoMessage.caption : info.message.viewOnceMessage.message.imageMessage.caption : type === "documentWithCaptionMessage" ? info.message.documentWithCaptionMessage.message.documentMessage.caption : type === "buttonsMessage" ? info.message.buttonsMessage.imageMessage.caption : type === "buttonsResponseMessage" ? info.message.buttonsResponseMessage.selectedButtonId : type === "listResponseMessage" ? info.message.listResponseMessage.singleSelectReply.selectedRowId : type === "templateButtonReplyMessage" ? info.message.templateButtonReplyMessage.selectedId : type === "groupInviteMessage" ? info.message.groupInviteMessage.caption : type === "pollCreationMessageV3" ? info.message.pollCreationMessageV3 : type === "interactiveResponseMessage" ? JSON.parse(info.message.interactiveResponseMessage.nativeFlowResponseMessage.paramsJson).id : type === "text" ? info.text : ""
 
@@ -231,6 +241,7 @@ const isAdm = isGroup ? isAdmin2(info.key.participant, participants) : '';
 var texto_exato = (type === 'conversation') ? info.message.conversation : (type === 'extendedTextMessage') ? info.message.extendedTextMessage.text : ''
 const texto = texto_exato.slice(0).trim().split(/ +/).shift().toLowerCase()
 
+const menc = isGroup ? ( info.message?.extendedTextMessage?.contextInfo?.mentionedJid?.[0] || info.message?.extendedTextMessage?.contextInfo?.participant || null ) : null;
 //SIMULA ESCRITA
 async function escrever (texto) {
 await alma.sendPresenceUpdate('composing', from) 
@@ -427,6 +438,17 @@ const msg = {
   desativado: "- *Comando desativado com sucesso. Módulo correspondente foi colocado em modo de repouso.*",
   ativado: "- *Função ativada! Todos os sistemas estão prontos e operacionais.*"
 }
+//⊰᯽⊱┈──╌❊ DB USUÁRIO ❊╌──┈⊰᯽⊱\\
+const { registrarUsuario, infoUser1, ganharXP, modificarUsuario, modificarsaldo, salvarUsuario, carregarDadosUsuarios } = require("./files/js/usuario.js");
+const infoUser = infoUser1(sender)
+const perfil = infoUser;
+const isPremium = infoUser1(sender)?.vip === true;
+
+if (!infoUser) {
+let saldoU; let vipU;
+if (isDono) { saldoU = "10000000"; vipU = true; } else { saldoU = "500"; vipU = false; }
+registrarUsuario(sender, sender2, pushname, saldoU, vipU);
+}
 
 //⊰᯽⊱┈──╌❊ DB GRUPO ❊╌──┈⊰᯽⊱\\
 const PastaDeGrupos = `./files/json/grupos/${from}.json`;
@@ -472,9 +494,8 @@ function ModificaGrupo(index) {
 const isAntiLink = isGroup ? ArquivosDosGrupos[0].antilink : undefined
 const isAntiLinkHard = isGroup ? ArquivosDosGrupos[0].antilinkHard : undefined
 const isResposta = isGroup ? ArquivosDosGrupos[0].autoResposta : undefined
-
 //⊰᯽⊱┈──╌❊ SECURITY ❊╌──┈⊰᯽⊱\\
-if (isGroup && isAntiLink) {
+if (!isGroup && isAntiLink) {
 const UrlLinks = ["https://chat.whatsapp.com"];
 for (let link of UrlLinks) {
 if (body.includes(link)) {
@@ -487,13 +508,15 @@ enviar(`*ERROR:* ${e}`);
 }} 
 }
 
-if (isGroup && isAntiLinkHard) {
-const UrlLinks = ["www", "https://", "wa.me", "http://"];
+if (isAntiLinkHard) {
+const UrlLinks = ["https://", "wa.me", "http://"];
 for (let link of UrlLinks) {
 if (body.includes(link)) {
 if(comando == "tiktok" && comando == "facebook" && comando == "instagram" && comando == "tiktok" && comando == "twitter" && comando == "ytmp3" && comando == "ytmp4" && comando == "play" && comando == "insta") return
 if (!isGroup) return;
-if (isAdm) return reagir("✅");
+if (isAdmin2(sender, participants)) {
+return reagir("✅")
+}
 enviar(`*_Links não são permitidos aqui, receba seu ban_*`); 
 await alma.sendMessage(from, { delete: { remoteJid: from, fromMe: false, id: info.key.id, participant: sender}})
 await alma.groupParticipantsUpdate(from, [sender], 'remove')
@@ -533,6 +556,7 @@ else { console.log(`==> ${corDetalhe.bold(pushname)} ${corNeutra('enviou uma Men
 }
 
 const logFilePath = path.join(__dirname, 'dono', 'logs.json');
+
 function salvarComandoDb(comando) {
 try {
 let logs = {};
@@ -558,6 +582,7 @@ fs.writeFileSync('./dono/config.json', JSON.stringify(index, null, 2) + '\n')}
 if (isCmd){ salvarComandoDb(comando || "comandoErrado")}
 apiDarkInfo = await fetchJson(`${BaseApiDark}/infoMy?username=${DARK_USERNAME}`);
 
+await ganharXP(info.key.participant, alma, from, sender2)
 switch(comando) {
 case 'log':
 try {
@@ -736,10 +761,8 @@ menuTxt = `╭━━━━━━━━━━━━━━━━━━━━━━
 │ ${emoji} | ${d}antilink${d} - *1/0*
 │ ${emoji} | ${d}antilinkhard${d} - *1/0*
 │ ${emoji} | ${d}autoresposta${d} - *1/0*
-│ ${emoji} | ${d}COMANDO${d} - *DESC*
-│ ${emoji} | ${d}COMANDO${d} - *DESC*
-│ ${emoji} | ${d}COMANDO${d} - *DESC*
-│ ${emoji} | ${d}COMANDO${d} - *DESC*
+│ ${emoji} | ${d}ban/kick${d} - *@*
+│ ${emoji} | ${d}d/apagar/delet${d} - *Marca msg*
 ╰─────────────────╯`;
 if (isBotao) {
 botaoLista(alma, from, menuTxt, fotomenu, "Comandos", "Escolha o seu comando", [{ header: emoji + ` Menu Completo`, title: "• menucompleto", description: "", id: `${prefix}menucompleto`},{ header: emoji + ` Menu Dono`, title: "• menudono", description: "", id: `${prefix}menudono`}, { header: emoji + ` Menu Jogos`, title: "• menujogos", description: "", id: `${prefix}menujogos`}])
@@ -814,13 +837,19 @@ menuTxt = `╭━━━━━━━━━━━━━━━━━━━━━━
 │ 🩵 Status: Online 🟢
 ╰────────────────────╯
 ╭──❀・MENU JOGOS・❀──╮
-│ ${emoji} | ${d}COMANDO${d} - *DESC*
-│ ${emoji} | ${d}COMANDO${d} - *DESC*
-│ ${emoji} | ${d}COMANDO${d} - *DESC*
-│ ${emoji} | ${d}COMANDO${d} - *DESC*
-│ ${emoji} | ${d}COMANDO${d} - *DESC*
-│ ${emoji} | ${d}COMANDO${d} - *DESC*
-│ ${emoji} | ${d}COMANDO${d} - *DESC*
+│ ${emoji} | ${d}perfil${d} - *Suas info*
+│ ${emoji} | ${d}gay${d} - *Porcentagem*
+│ ${emoji} | ${d}lindo${d} - *Porcentagem*
+│ ${emoji} | ${d}feio${d} - *Porcentagem*
+│ ${emoji} | ${d}lesbico${d} - *Porcentagem*
+│ ${emoji} | ${d}lesbica${d} - *Porcentagem*
+│ ${emoji} | ${d}gostosa${d} - *Porcentagem*
+│ ${emoji} | ${d}gostoso${d} - *Porcentagem*
+│ ${emoji} | ${d}podre${d} - *Porcentagem*
+│ ${emoji} | ${d}atraente${d} - *Porcentagem*
+│ ${emoji} | ${d}fiel${d} - *Porcentagem*
+│ ${emoji} | ${d}gado${d} - *Porcentagem*
+│ ${emoji} | ${d}gada${d} - *Porcentagem*
 ╰──────────────────╯`;
 if (isBotao) {
 botaoLista(alma, from, menuTxt, fotomenu, "Comandos", "Escolha o seu comando", [{ header: emoji + ` Menu Completo`, title: "• menucompleto", description: "", id: `${prefix}menucompleto`}, { header: emoji + ` Menu Adm`, title: "• menuadm", description: "", id: `${prefix}menuadm`}, { header: emoji + ` Menu Dono`, title: "• menudono", description: "", id: `${prefix}menudono`}])
@@ -832,7 +861,7 @@ break
 //COMANDOS DONO
 case 'reset': case 'rt':
 if(!isDono) return enviar(msg.dono);
-laura.sendMessage(from,{text: `- *O processo foi pausado por segurança. Sincronização em andamento.*`}, {quoted: info})
+alma.sendMessage(from,{text: `- *O processo foi pausado por segurança. Sincronização em andamento.*`}, {quoted: info})
 await esperar(1000)
 statusReset = { executado: true, id: from };
 fs.writeFileSync('status.json', JSON.stringify(statusReset));
@@ -938,12 +967,12 @@ if (!isAdm && !isDono) return enviar(msg.adm)
 if(args.length < 1) return enviar(`_Use o comando assim_\n> *_Exemplo:_* ${prefix + comando} 1 para ativar, 0 para desativar.`)
 if(Number(args[0]) === 1) {
 if(isAntiLinkHard) return enviar('- *O antilinkhard já está ativado nesse grupo*')
-ArquivosDosGrupos[0].antilinkhard = true
+ArquivosDosGrupos[0].antilinkHard = true
 ModificaGrupo(ArquivosDosGrupos)
 enviar(msg.ativado)
 } else if(Number(args[0]) === 0) {
 if(!isAntiLinkHard) return enviar('- *O antilinkhard já está desativado nesse grupo*')
-ArquivosDosGrupos[0].antilinkhard = false
+ArquivosDosGrupos[0].antilinkHard = false
 ModificaGrupo(ArquivosDosGrupos)
 enviar(msg.desativado)
 }
@@ -966,8 +995,91 @@ ModificaGrupo(ArquivosDosGrupos)
 enviar(msg.desativado)
 }
 break
-//COMANDOS JOGOS
 
+case 'ban': case 'kick':
+if (!isGroup) return enviar(msg.grupo);
+if (!isAdmBot) return enviar(msg.botAdm);
+if (!isAdm && !isDono) return enviar(msg.adm)
+try {
+if(!menc) return enviar("Marque a mensagem do usuário ou marque o @ dele.., lembre de só marcar um usuário...")
+if (!menc) return enviar("Este usuário já foi removido do grupo ou saiu do grupo.")
+if(numeroBot.includes(menc)) return enviar('Não sou tão besta assim né 😑')
+if(dono.includes(menc)) return enviar('pq voce ta tentando dar ban no meu dono?😑')
+await alma.sendMessage(from, {text: `*Sistema em operação.*
+*Hmm… sinais indicam que alguém vai receber um ban hoje.*
+*Nada pessoal, apenas… manutenção de ordem.*`, mentions: [menc]})
+reagir("✅")
+await alma.sendMessage(from, { delete: { remoteJid: from, fromMe: false, id: info.message.extendedTextMessage.contextInfo.stanzaId, participant: menc}})
+await alma.groupParticipantsUpdate(from, [info.message?.extendedTextMessage?.contextInfo?.mentionedJid[0]], "remove")
+} catch (e) {
+console.log(e)
+}
+break
+
+case 'd': case 'delet': case 'apagar':{
+if (!isGroup) return enviar(msg.grupo);
+if (!isAdmBot) return enviar(msg.botAdm);
+if (!isAdm && !isDono) return enviar(msg.adm)
+if(!menc) return enviar("Marque a mensagem do usuário que deseja apagar..")
+await alma.sendMessage(from, { delete: { remoteJid: from, fromMe: false, id: info.message.extendedTextMessage.contextInfo.stanzaId, participant: menc}})
+reagir("🗑️")
+};
+break
+//COMANDOS JOGOS
+case 'perfil': {
+await enviar(`- *👻 Processando informações do banco de dados... estou montando seu perfil....*`)
+try { slaw = await alma.profilePictureUrl(sender, 'image'); shortpc = await axios.get(`https://tinyurl.com/api-create.php?url=${slaw}`); ppimg = shortpc.data; } catch(e) { ppimg = 'https://uploads.speedhosting.cloud/uploads/I2jc3Zx2iK.jpg'; };
+const random = (max) => Math.floor(Math.random() * max);
+const sorte = random(100); 
+const valor = random(5000);
+const gos = random(100);
+textoPerfil = `     ┈━═☆ *My Profile* ☆═━┈
+*⛃ ${emoji} | Nome: ${perfil.nome}*
+*⛃ ${emoji} | AlmaCoins: ${perfil.saldo}*
+*⛃ ${emoji} | Vip: ${perfil.vip ? "Sim" : "Não"}*
+*⛃ ${emoji} | Banido: ${perfil.banido ? "Sim" : "Não"}*
+*⛃ ${emoji} | Nivel: ${perfil.nivel}*
+*⛃ ${emoji} | Xp: ${perfil.xp}*
+*⛃ ${emoji} | Xp Nescessário: ${perfil.xp}/${perfil.xpNecessario}*
+*⛃ ${emoji} | Bio: ${perfil.bio || "Sem"}*
+*⛃ ${emoji} | Sorte: ${sorte}%*
+*⛃ ${emoji} | Valor Progama: ${valor}$*
+*⛃ ${emoji} | Gostoso(a): ${gos}%*`;
+fotoPerfil = `${BaseApiDark}/api/canvaPdz/digital-id?name=${perfil.nome || pushname}&avatar=${perfil.foto || ppimg}&id=${random(1000000)}&clearance=LEVEL+${perfil.nivel}&department=${isDono ? "Developer" : "Member"}&status=ATIVO&expiration=12/2025&apikey=${DARK_APIKEY}` || ppimg;
+if (isBotao) {
+await botaoCopia(alma, from, fotoPerfil, textoPerfil, [{name: "Copiar", id: textoPerfil, copy: textoPerfil }]);
+} else {
+enviarImg2(fotoPerfil, textoPerfil)
+}
+}
+break
+
+case 'gay':
+case 'lindo':
+case 'feio':
+case 'lesbico':
+case 'lesbica':
+case 'gostosa':
+case 'gostoso':
+case 'podre':
+case 'atraente':
+case 'fiel':
+case 'gado':
+case 'gada': {
+let randinM
+if (isDono) { randinM = randinM = Math.floor(80 + Math.random() * 100).toString(); } else { randinM = randinM = Math.floor(1 + Math.random() * 100).toString(); }
+reagir("🧐")
+if (menc) {
+let { key } = await alma.sendMessage(from, {text: `*Aguarde em quanto eu verifico a porcentagem dele(a) de ${comando}...*`},{quoted: info})
+await esperar(2000)
+await alma.sendMessage(from, {text: `A porcentagem de ${comando} do usuário @${menc.split("@")[0]} é de ${randinM}%`, mentions: [menc], edit: key },{quoted: info});
+} else {
+let { key } = await alma.sendMessage(from, {text: `*Aguarde em quanto eu verifico sua porcentagem de ${comando}...*`},{quoted: info})
+await esperar(2000)
+await alma.sendMessage(from, {text: `Sua porcentagem de ${comando} é de ${randinM}%`, edit: key },{quoted: info});
+}
+}
+break
 //COMANDOS COM API
 //download
 case 'play': {
@@ -986,7 +1098,7 @@ textoPlay = `*⌬「🎧 MUSIC MODULE 🎶」⌬*
 *◈ ${emoji} | Operador:* _${donoName}_  
 〰〰〰〰〰〰〰〰〰〰〰〰〰  
 *💠 Sistema de áudio inicializado. Preparando stream...*`
-fotoPlay = api.image;
+fotoPlay = `https://dksapis.online/api/canvaPdz/album-cover?avatar=${api.image}&artist=${api.author.name}&album=${api.title.slice(0, 30)}&time=${api.timestamp}&apikey=${DARK_APIKEY}` || api.image;
 await enviarImg2(fotoPlay, textoPlay)
 await enviarAd(`${BaseApiDark}/api/download/youtube-audio?url=${api.url}&apikey=${DARK_APIKEY}`)
 }
@@ -1078,7 +1190,7 @@ if (!staAp.status) return enviar(`- *${staAp.mensagem}*`)
 if (!q) return enviar("Cade o texto para a sticker?")
 try {
 enviar("*Iniciando protocolo de renderização... figurinha animada em construção. Por favor, aguarde um momento.*")
-laura.sendMessage(from, { sticker: { url: `${BaseApiDark}/api/sticker/canva/${comando}?texto=${encodeURIComponent(q)}&apikey=${DARK_APIKEY}`} })
+alma.sendMessage(from, { sticker: { url: `${BaseApiDark}/api/sticker/canva/${comando}?texto=${encodeURIComponent(q)}&apikey=${DARK_APIKEY}`} })
 } catch (e) {
 console.log(e)
 enviar("erro ao criar a figurinha")
@@ -1100,7 +1212,7 @@ staAp = statusApi(apiDarkInfo);
 if (!staAp.status) return enviar(`- *${staAp.mensagem}*`)
 try {
 enviar("*Iniciando protocolo de renderização... figurinha animada em construção. Por favor, aguarde um momento.*")
-laura.sendMessage(from, { sticker: { url: `${BaseApiDark}/api/sticker/canva/v2/${comando.replace("-v2", "")}?texto=${encodeURIComponent(q)}&apikey=${DARK_APIKEY}`} })
+alma.sendMessage(from, { sticker: { url: `${BaseApiDark}/api/sticker/canva/v2/${comando.replace("-v2", "")}?texto=${encodeURIComponent(q)}&apikey=${DARK_APIKEY}`} })
 } catch (e) {
 console.log(e)
 enviar("erro ao criar a figurinha")
@@ -1122,7 +1234,7 @@ try {
 staAp = statusApi(apiDarkInfo);
 if (!staAp.status) return enviar(`- *${staAp.mensagem}*`)
 enviar("*Iniciando protocolo de renderização... figurinha animada em construção. Por favor, aguarde um momento.*")
-laura.sendMessage(from, { sticker: { url: `${BaseApiDark}/api/sticker/canva/v3/${comando.replace("-v2", "")}?texto=${encodeURIComponent(q)}&apikey=${DARK_APIKEY}`} })
+alma.sendMessage(from, { sticker: { url: `${BaseApiDark}/api/sticker/canva/v3/${comando.replace("-v2", "")}?texto=${encodeURIComponent(q)}&apikey=${DARK_APIKEY}`} })
 } catch (e) {
 console.log(e)
 enviar("erro ao criar a figurinha")
@@ -1213,7 +1325,7 @@ await alma.sendMessage(from, {image: {url: fotomenu}, caption: textoC, mentions:
 //⊰᯽⊱┈──╌❊ SEM PREFIXO ❊╌──┈⊰᯽⊱\\
 if (isResposta) {
 if (body.toLowerCase().includes("alma") || body.toLowerCase().includes("bot")) {
-fig = "./files/figurinha/alma1.webp";
+fig = `./files/figurinha/alma${Math.floor(Math.random() * 26)}.webp`;
 await alma.sendMessage(from, {sticker: {url: fig}}, {quoted: info});
 }
 if (body.toLowerCase().includes("sono") || body.toLowerCase().includes("dormir")  || body.toLowerCase().includes("noite")) {
@@ -1262,6 +1374,8 @@ if (connection === 'open') { // CONEXÃO ABERTA
 console.log("[Sistema] → Canal neural sincronizado com sucesso!");
 console.log("Conexão estabelecida! Uhu~ missão de comunicação concluída com êxito ✨");
 inicial();
+//BANNER AO INICIAR O BOT
+//TUTORIAL: https://youtu.be/g0jzW3PFw9A
 }
 
 else if (connection === "connecting") { // TENTANDO CONECTAR
